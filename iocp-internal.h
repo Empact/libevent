@@ -108,7 +108,7 @@ struct event_overlapped {
 	finished.
  */
 EVENT2_EXPORT_SYMBOL
-void event_overlapped_init_(struct event_overlapped *, iocp_callback cb);
+void event_overlapped_init_(struct event_overlapped *overlapped, iocp_callback cb);
 
 /** Allocate and return a new evbuffer that supports overlapped IO on a given
     socket.  The socket must be associated with an IO completion port using

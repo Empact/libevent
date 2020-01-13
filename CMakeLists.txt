@@ -294,6 +294,8 @@ if (${GNUC})
          -Wlogical-op
 
          -Wwrite-strings
+         -Wdocumentation
+         -Wno-documentation-deprecated-sync
     )
 
     if (${CLANG})
@@ -1580,4 +1582,3 @@ message(STATUS "CMAKE_C_COMPILER:         ${CMAKE_C_COMPILER} (id ${CMAKE_C_COMP
 message(STATUS "CMAKE_AR:                 ${CMAKE_AR}")
 message(STATUS "CMAKE_RANLIB:             ${CMAKE_RANLIB}")
 message(STATUS "")
-

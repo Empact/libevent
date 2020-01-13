@@ -665,7 +665,6 @@ enum bufferevent_trigger_options {
 
    @param bufev the bufferevent object
    @param iotype either EV_READ or EV_WRITE or both.
-   @param options
  */
 EVENT2_EXPORT_SYMBOL
 void bufferevent_trigger(struct bufferevent *bufev, short iotype,
@@ -678,7 +677,6 @@ void bufferevent_trigger(struct bufferevent *bufev, short iotype,
 
    @param bufev the bufferevent object
    @param what the flags to pass onto the event callback
-   @param options
  */
 EVENT2_EXPORT_SYMBOL
 void bufferevent_trigger_event(struct bufferevent *bufev, short what,
@@ -708,7 +706,7 @@ enum bufferevent_filter_result {
 
     @param src An evbuffer to drain data from.
     @param dst An evbuffer to add data to.
-    @param limit A suggested upper bound of bytes to write to dst.
+    @param dst_limit A suggested upper bound of bytes to write to dst.
        The filter may ignore this value, but doing so means that
        it will overflow the high-water mark associated with dst.
        -1 means "no limit".

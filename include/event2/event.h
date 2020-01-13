@@ -1011,7 +1011,7 @@ int event_base_got_break(struct event_base *eb);
 
    @see event_new()
  */
-typedef void (*event_callback_fn)(evutil_socket_t, short, void *);
+typedef void (*event_callback_fn)(evutil_socket_t fd, short events, void * arg);
 
 /**
   Return a value used to specify that the event itself must be used as the callback argument.

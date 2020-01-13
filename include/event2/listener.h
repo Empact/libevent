@@ -48,7 +48,7 @@ struct evconnlistener;
    @param socklen The length of addr
    @param user_arg the pointer passed to evconnlistener_new()
  */
-typedef void (*evconnlistener_cb)(struct evconnlistener *, evutil_socket_t, struct sockaddr *, int socklen, void *);
+typedef void (*evconnlistener_cb)(struct evconnlistener *listener, evutil_socket_t fd, struct sockaddr *addr, int socklen, void *user_arg);
 
 /**
    A callback that we invoke when a listener encounters a non-retriable error.
@@ -56,7 +56,7 @@ typedef void (*evconnlistener_cb)(struct evconnlistener *, evutil_socket_t, stru
    @param listener The evconnlistener
    @param user_arg the pointer passed to evconnlistener_new()
  */
-typedef void (*evconnlistener_errorcb)(struct evconnlistener *, void *);
+typedef void (*evconnlistener_errorcb)(struct evconnlistener *listener, void *user_arg);
 
 /** Flag: Indicates that we should not make incoming sockets nonblocking
  * before passing them to the callback. */
@@ -90,8 +90,8 @@ typedef void (*evconnlistener_errorcb)(struct evconnlistener *, void *);
  */
 #define LEV_OPT_DEFERRED_ACCEPT		(1u<<6)
 /** Flag: Indicates that we ask to allow multiple servers (processes or
- * threads) to bind to the same port if they each set the option. 
- * 
+ * threads) to bind to the same port if they each set the option.
+ *
  * SO_REUSEPORT is what most people would expect SO_REUSEADDR to be, however
  * SO_REUSEPORT does not imply SO_REUSEADDR.
  *

@@ -56,7 +56,7 @@ struct timeval;
   @param info contextual information passed from event_base_loop.
   @param arg additional user-defined argument, set in `evwatch_prepare_new`.
  */
-typedef void (*evwatch_prepare_cb)(struct evwatch *, const struct evwatch_prepare_cb_info *, void *);
+typedef void (*evwatch_prepare_cb)(struct evwatch *watcher, const struct evwatch_prepare_cb_info *info, void *arg);
 
 /**
   Check callback, invoked by event_base_loop immediately after polling for I/O
@@ -66,7 +66,7 @@ typedef void (*evwatch_prepare_cb)(struct evwatch *, const struct evwatch_prepar
   @param info contextual information passed from event_base_loop.
   @param arg additional user-defined argument, set in `evwatch_check_new`.
  */
-typedef void (*evwatch_check_cb)(struct evwatch *, const struct evwatch_check_cb_info *, void *);
+typedef void (*evwatch_check_cb)(struct evwatch *watcher, const struct evwatch_check_cb_info *info, void *arg);
 
 /**
   Register a new "prepare" watcher, to be called in the event loop prior to
